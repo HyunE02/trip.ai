@@ -1,0 +1,38 @@
+services:
+  backend:
+    build: ./backend
+    container_name: trip-ai-backend-dev
+    env_file: .env
+    environment:
+      - PORT=3001
+      - FRONTEND_URL=http://localhost:5173
+      - NODE_ENV=development
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/src:/app/src  # 코드 변경 시 즉시 반영
+    command: node --watch src/index.js
+    restart: unless-stopped
+    networks:
+      - trip-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: trip-ai-frontend-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src:/app/src        # src만 마운트해 핫리로드
+      - ./frontend/index.html:/app/index.html
+      - ./frontend/vite.config.js:/app/vite.config.js
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - trip-net
+
+networks:
+  trip-net:
+    driver: bridge

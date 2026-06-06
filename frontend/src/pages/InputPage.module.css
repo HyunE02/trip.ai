@@ -1,0 +1,321 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.logo {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 36px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  background: #6c63ff;
+  color: #fff;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.hint {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder { color: rgba(255, 255, 255, 0.3); }
+.input:focus { border-color: #6c63ff; }
+
+/* 슬라이더 */
+.range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  cursor: pointer;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #6c63ff;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.25);
+}
+.rangeLabels {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.78rem;
+}
+.rangeActive { color: #6c63ff; font-weight: 700; }
+
+/* 칩 */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chip:hover { border-color: rgba(108, 99, 255, 0.5); color: #fff; }
+.chipActive { background: #6c63ff; border-color: #6c63ff; color: #fff; font-weight: 600; }
+.chipIcon { font-size: 1rem; }
+
+/* 서브옵션 */
+.subSection {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 4px;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.subLabel {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.subChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.subChip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.subChip:hover { border-color: rgba(108, 99, 255, 0.4); color: #fff; }
+.subChipActive { background: rgba(108, 99, 255, 0.25); border-color: #6c63ff; color: #c4b5fd; font-weight: 600; }
+
+.restrictChip { border-color: rgba(248, 113, 113, 0.15); }
+.restrictChip:hover { border-color: rgba(248, 113, 113, 0.4); }
+.restrictChipActive { background: rgba(248, 113, 113, 0.15); border-color: #f87171; color: #fca5a5; font-weight: 600; }
+
+/* 일정 패턴 */
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.scheduleBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 3px;
+  text-align: left;
+}
+.scheduleBtn:hover { border-color: rgba(108, 99, 255, 0.4); }
+.scheduleBtnActive { background: rgba(108, 99, 255, 0.2); border-color: #6c63ff; color: #fff; }
+
+.scheduleLabel { font-size: 0.88rem; font-weight: 600; }
+.scheduleDesc  { font-size: 0.73rem; color: rgba(255, 255, 255, 0.4); line-height: 1.4; }
+.scheduleBtnActive .scheduleDesc { color: rgba(255, 255, 255, 0.65); }
+
+.customTimes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeField {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.timeInput {
+  width: 52px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 5px 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  outline: none;
+}
+.timeInput:focus { border-color: #6c63ff; }
+/* 숫자 입력 화살표 완전 제거 */
+.timeInput::-webkit-outer-spin-button,
+.timeInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.timeInput[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* 예산 */
+.budgets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.budgetBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 3px;
+}
+.budgetBtn:hover { border-color: rgba(108, 99, 255, 0.4); }
+.budgetActive { background: rgba(108, 99, 255, 0.2); border-color: #6c63ff; color: #fff; }
+.budgetLabel { font-size: 0.92rem; font-weight: 600; }
+.budgetDesc  { font-size: 0.73rem; color: rgba(255, 255, 255, 0.4); }
+.budgetActive .budgetDesc { color: rgba(255, 255, 255, 0.65); }
+
+/* 에러 */
+.error {
+  background: rgba(255, 80, 80, 0.12);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #ff8080;
+  font-size: 0.88rem;
+}
+
+/* 제출 버튼 */
+.submit {
+  background: linear-gradient(135deg, #6c63ff, #9b59b6);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+.submit:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+.submit:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loadingNote {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}

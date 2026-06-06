@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: ./backend
+    container_name: trip-ai-backend
+    env_file: .env
+    environment:
+      - PORT=3001
+      - FRONTEND_URL=http://localhost:5173
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+    networks:
+      - trip-net
+
+  frontend:
+    build: ./frontend
+    container_name: trip-ai-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - trip-net
+
+networks:
+  trip-net:
+    driver: bridge

@@ -1,0 +1,18 @@
+# 환경변수 (절대 커밋 금지)
+.env
+
+# 의존성
+node_modules/
+*/node_modules/
+
+# 빌드 결과
+dist/
+build/
+
+# 에디터
+.DS_Store
+.idea/
+.vscode/
+
+# 로그
+*.log
