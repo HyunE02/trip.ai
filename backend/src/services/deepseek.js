@@ -75,8 +75,11 @@ ${prefDesc}
 8. 각 장소의 start_time은 이전 장소 종료 시간 + 20분 이동 시간을 더해 계산할 것
 9. 식이제한이 있다면 해당 음식 관련 장소 제외
 10. 취향 세부 옵션에 맞는 장소 우선 선택
-11. en_name은 Google Maps에서 정확히 검색 가능한 영문/로마자 표기 사용 (예: "Senso-ji Temple", "Shibuya Crossing")
-12. confidence: 확실하면 "high", 약간 불확실하면 "medium", 불확실하면 "low" — medium 이하는 가급적 제외
+11. **장소 이름(name)은 반드시 한국어로 작성** (영어/로마자/현지어 금지).
+    - 한국어 표기가 없으면 한국어 음역 사용 (예: "센소지", "시부야 스크램블 교차로", "에펠탑").
+    - "Senso-ji", "Shibuya Crossing" 같은 영문 표기는 name 필드에 절대 사용 금지.
+12. en_name은 Google Maps 검색용 영문/로마자 표기 (예: "Senso-ji Temple", "Shibuya Crossing").
+13. confidence: 확실하면 "high", 약간 불확실하면 "medium", 불확실하면 "low" — medium 이하는 가급적 제외
 
 반드시 아래 JSON 스키마를 정확히 따르세요:
 {

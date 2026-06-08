@@ -61,10 +61,11 @@ export default function MapView({ days, selectedDay }) {
     const latlngs = []
 
     // 좌표 있는 항목만 렌더링하되, 라벨 번호는 day.items 의 원본 인덱스(리스트 위치)를 사용
+    // 폴리라인에는 숙소도 포함시켜 "숙소 → 1번 장소 → ..." 동선을 끊김 없이 표시
     day.items.forEach((item, idx) => {
       if (item.lat == null || item.lng == null) return
       const pos = [item.lat, item.lng]
-      if (!item.isHotel) latlngs.push(pos)
+      latlngs.push(pos)
 
       const isHotel = item.isHotel
       const label = String(idx + 1)
