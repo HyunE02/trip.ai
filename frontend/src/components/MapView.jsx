@@ -60,28 +60,33 @@ export default function MapView({ days, selectedDay }) {
     const color = DAY_COLORS[selectedDay % DAY_COLORS.length]
     const latlngs = []
 
-    // 좌표 있는 항목만 렌더링 (숙소 포함, lat/lng null 제외)
-    const mapItems = day.items.filter((i) => i.lat != null && i.lng != null)
-    let activityIdx = 0  // 숙소 제외 순번
-
-    mapItems.forEach((item) => {
+    // 좌표 있는 항목만 렌더링하되, 라벨 번호는 day.items 의 원본 인덱스(리스트 위치)를 사용
+    day.items.forEach((item, idx) => {
+      if (item.lat == null || item.lng == null) return
       const pos = [item.lat, item.lng]
       if (!item.isHotel) latlngs.push(pos)
 
       const isHotel = item.isHotel
-      const label = isHotel ? '🏨' : String(++activityIdx)
+      const label = String(idx + 1)
       const bg    = isHotel ? '#444' : color
       const size  = isHotel ? 32 : 28
 
       const icon = L.divIcon({
         className: '',
         html: `<div style="
+          position:relative;
           background:${bg};color:#fff;
           width:${size}px;height:${size}px;border-radius:50%;
           display:flex;align-items:center;justify-content:center;
           font-size:${isHotel ? '14px' : '12px'};font-weight:700;
           border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.4);
-        ">${label}</div>`,
+        ">${label}${isHotel ? `<div style="
+          position:absolute;top:-6px;right:-8px;
+          background:#fff;border:1px solid #444;border-radius:50%;
+          width:18px;height:18px;
+          display:flex;align-items:center;justify-content:center;
+          font-size:11px;line-height:1;
+        ">🏨</div>` : ''}</div>`,
         iconSize: [size, size],
         iconAnchor: [size / 2, size / 2],
         popupAnchor: [0, -size / 2],

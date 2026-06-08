@@ -17,6 +17,19 @@ export function validateAndCleanItems(items) {
   })
 }
 
+export function filterByCityRadius(items, cityCenter, maxRadiusKm = 50) {
+  if (!cityCenter || !Array.isArray(items)) return items
+  return items.filter((item) => {
+    if (!isValidCoord(item.lat, item.lng)) return false
+    const dist = haversine(cityCenter.lat, cityCenter.lng, item.lat, item.lng)
+    if (dist > maxRadiusKm) {
+      console.warn(`✗ 도시 반경 초과로 제거: ${item.name} (${dist.toFixed(1)}km > ${maxRadiusKm}km)`)
+      return false
+    }
+    return true
+  })
+}
+
 function haversine(lat1, lng1, lat2, lng2) {
   const R = 6371
   const dLat = ((lat2 - lat1) * Math.PI) / 180
